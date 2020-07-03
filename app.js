@@ -25,7 +25,7 @@ var strategy = new Auth0Strategy(
     clientID: 'sEFrC5YbPK4G42i29MzbUb18vlT8AgZj',
     clientSecret: 'dUoB0Kebm-IXrD0H0YZ-gDRL6JfG_6YYnrfLElus4Tibf1Qi8ouE8Yy5XamDYy3X',
     callbackURL:
-      process.env.AUTH0_CALLBACK_URL ||  "http://localhost:3000/callback"
+      process.env.AUTH0_CALLBACK_URL ||  "http://206.189.206.241:3000/callback"
   },
   function (accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
