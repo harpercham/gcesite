@@ -1,0 +1,91 @@
+   
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#projects" class="w3-bar-item w3-button"><b>Projects</b></a>
+    <a href="#admin" class="w3-bar-item w3-button"><b>Admin</b></a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="https://imgur.com/GmklGyP.jpg" alt="Architecture" width="1500" height="800">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>GCE</b></span> <span class="w3-hide-small w3-text-light-grey">Global Civil Engineering</span></h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding" style="max-width:1564px">
+
+  <!-- Project Section -->
+  <div class="w3-container w3-padding-32" id="projects">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
+  </div>
+
+  <div class="w3-row-padding">  
+    <%for(var i=1;i<9; i++){ %>
+        <div style='cursor:pointer' class="w3-col l3 m6 w3-margin-bottom">
+            <div  code=<%= rows[i][2]%> tag=<%= rows[i][7]%> id=list class="w3-display-container">
+                <div id='project_title' class="w3-display-topleft w3-black w3-padding" ><%= rows[i][5]%></div>
+                <img src="https://imgur.com/t11qV5J.jpg" alt="project-list" style="width:100%" >
+            </div> 
+        </div>  
+        <%}%>
+  </div>
+
+  <!-- About Section -->
+  <div class="w3-container w3-padding-32" id="admin" style='background-color:  rgb(39, 37, 37);'>
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" style="color:white">Admin</h3>
+  </div>
+
+  <div class="w3-row-padding w3-grayscale" style='background-color: rgb(39, 37, 37);'>
+    <div style='cursor:pointer' tag='hr'  id='hr' class="w3-col l3 m6 w3-margin-bottom">
+      <img src="https://imgur.com/coHNTmH.jpg" alt="image-hr" style="width:100%">
+      <p><button  class="w3-button w3-light-grey w3-block">HR</button></p>
+    </div>
+    <div style='cursor:pointer' tag='store' id='store' class="w3-col l3 m6 w3-margin-bottom">
+      <img src="https://imgur.com/LTJBfEN.jpg" alt="image-store" style="width:100%">
+      <p><button class="w3-button w3-light-grey w3-block">Store</button></p>
+    </div>
+    <div style='cursor:pointer' tag='doc' id='doc' class="w3-col l3 m6 w3-margin-bottom">
+      <img src="https://imgur.com/4tIMkfP.jpg" alt="image-store" style="width:100%">
+      <p><button tag='doc' class="w3-button w3-light-grey w3-block">Documents</button></p>
+    </div>
+    <div style='cursor:pointer' tag='covid' id='event' class="w3-col l3 m6 w3-margin-bottom">
+      <img src="https://imgur.com/nLVIKCt.jpg" alt="image-covid" style="width:100%">
+      <p><button tag='covid' class="w3-button w3-light-grey w3-block">COVID-19</button></p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
+    <p>Contact</p>
+    <p>Tel: +65 6957 0113</p>
+    <p>Fax: +65 6957 0114</p>
+    <p>Email: info@gce.sg</p>
+    <p>Address: 64D Kallang Pudding Rd, #03-00 Wee Tiong Building, Singapore 349323</p>
+  </div>
+  
+
+
+<!-- End page content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by <a>GCE 2020</a></p>
+</footer>
+
+</body>
+</html>

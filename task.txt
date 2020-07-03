@@ -1,0 +1,4 @@
+1. payload error
+2. tutorial for form making (cred)
+3. pdf image input required
+4. hr,store,doc,covid19 

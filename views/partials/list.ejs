@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+  <div class='list'>
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
+      <img class="w3-image" src="https://drscdn.500px.org/photo/149290687/m%3D900/753ed8cb330812991e3f06ee913ff786"
+        alt="image-header" width="1500" height="600">
+      <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
+        <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge"><%= project_title[0]%> -<%= project_code[0]%></h1>
+        <h5 class="w3-hide-large" style="white-space:nowrap"><%= project_title[0]%> -<%= project_code[0]%></h5>
+      </div>
+
+      <!-- Navbar (placed at the bottom of the header image) -->
+      <div class="w3-bar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+        <a href="/home" class="w3-bar-item w3-button">Home</a>
+        <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+      </div>
+    </header>
+
+    <!-- Navbar on small screens -->
+    <div class="w3-center w3-light-grey w3-padding-16 w3-hide-large w3-hide-medium">
+      <div class="w3-bar w3-light-grey">
+        <a href="/home" class="w3-bar-item w3-button">Home</a>
+        <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+      </div>
+    </div>
+
+    <!-- Page content -->
+    <div class="w3-content w3-padding-large w3-margin-top" id="form">
+      <div id="header">
+        <!-- Images (Portfolio) -->
+        <%for(var i=0;i<list.length; i++){ %>
+        <div style='cursor:pointer' class="container" title=<%= encodeURI(list[i][0]) %>
+          date=<%= encodeURI(list[i][1]) %> url=<%= encodeURI(list[i][2]) %> sheetname=<%= encodeURI(list[i][3]) %>
+          cred=<%= encodeURI(list[i][4]) %> tag=<%= encodeURI(list[i][5]) %> tabSeq=<%= encodeURI(list[i][6]) %>
+          field=<%= encodeURI(list[i][7]) %> signpad=<%= encodeURI(list[i][8]) %> whatsapp=<%= encodeURI(list[i][9]) %>
+          image=<%= encodeURI(list[i][10]) %> index=<%=i %>>
+          <img src="https://imgur.com/Zn41yEb.jpg" alt="image-form-list" class="w3-image" width="1000" height="500">
+          <div class="centered">
+            <h1><%= list[i][0] %></h1>
+          </div>
+        </div>
+        <%}%>
+  </div>
+</div>
+</div>
+
+<a class="signature-background"> 
+<div id="signature-pad" class="signature-pad"> 
+  <div class="signature-pad--body">
+    <canvas id="canvas"></canvas>
+  </div>
+  <div class="signature-pad--footer">
+    <div class="description">Sign above</div>
+    <div class="signature-pad--actions">
+
+    <button type="button" class='clearButton'>Clear</button>
+    <button type="button" class='cancelButton'>Cancel</button>
+    <button type="button" class='saveButton'>Save</button>
+  
+  </div>
+  </div>
+</div>
+</a>
+
+
+
+
+<%for(var i=0;i<list.length; i++){ %>
+        <div id=<%= 'popup'.concat(i)%>>
+          <div class="popup">
+            <div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
+              <!-- form -->
+              <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="contact">
+                <h3 class="w3-center"><%=list[i][0]%></h3>
+                <hr>
+                <form action="/crud" id=<%= 'my_form'.concat(i)%> method='POST' class="form-container">
+
+                  <%for(var j=0;j< (Object.keys(JSON.parse(list[i][7]))).length; j++){ %>
+                  <div class="w3-section">
+                    <label><%= Object.keys(JSON.parse(list[i][7]))[j] %></label>
+                    <% if((Object.keys(JSON.parse(list[i][7]))[j]).includes('(upload)')){ %>
+
+                    <input class="w3-input w3-border" type="file" id=filefield parent=<%=i%> num=<%=j%>
+                      name=<%= encodeURI(Object.keys(JSON.parse(list[i][7]))[j]) %> required>
+                    <% } else{ %>
+
+                    <input class="w3-input w3-border" type="text" id="textfield" parent=<%=i%>
+                      name=<%= encodeURI(Object.keys(JSON.parse(list[i][7]))[j]) %> required>
+                    <% } %>
+
+                  </div>
+                  <%}%>
+
+                  
+                  <%for(var j=0;j< (Object.keys(JSON.parse(list[i][8]))).length; j++){ %>
+                  <div class="w3-section">
+                    <% if((Object.keys(JSON.parse(list[i][8]))[0])==0){ %>
+
+                    <% } else{ %>
+                    <label><%= encodeURI(Object.keys(JSON.parse(list[i][8]))[j]) %></label>
+                    <input class="w3-input w3-border" value="click here to sign" style="color:red" type="button"
+                      id="sign" index=<%=j %>>
+                    <% } %>
+
+                  </div>
+                  <%}%>
+               
+
+                  <button type="submit" class="w3-button w3-block w3-blue">Submit</button>
+                  <button type="button" id='close' class="w3-button w3-block w3-dark-grey">Close</button>
+                  <button type="button" id='genpdf' parent=<%=i%> class="w3-button w3-block w3-red">GenPDF</button>
+                  <button type="button" id='whatsapp' parent=<%=i%>
+                    class="w3-button w3-block w3-green">Whatsapp</button>
+
+
+                </form><br>
+              </div>
+              <!-- End page content -->
+            </div>
+          </div>
+        </div>
+        <%}%>
+
+
+
+
+    
+      </body>
+      </html>
+
+     
+          
